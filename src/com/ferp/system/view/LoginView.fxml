@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-border-color: #3282F6; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button mnemonicParsing="false" text="ADMIN" textFill="#0090ff" />
@@ -17,7 +16,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Pictures/Captura%20de%20pantalla%202026-09-08%20141154.jpg" />
+                  <Image url="@../resources/images/Captura%20de%20pantalla%202026-09-08%20141154.jpg" />
                </image>
             </ImageView>
             <Label text="INGRESE NOMBRE">
