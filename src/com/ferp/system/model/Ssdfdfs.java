@@ -4,10 +4,14 @@
  */
 package com.ferp.system.model;
 
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author informatica
  */
 public class Ssdfdfs {
+ 
+    private TextField txtHablar; 
     
 }
