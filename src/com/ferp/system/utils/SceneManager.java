@@ -41,6 +41,5 @@ public class SceneManager {
     public void setTitle(String title) {
         
     }
-
     
 }

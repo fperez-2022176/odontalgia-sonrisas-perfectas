@@ -4,10 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/Informatica/OneDrive%20-%20Fundación%20Kinal%20-Alumnos-/Escritorio/Ferdy%20Pérez%20%20%20%202022176/Bimestre4/Semana%205/sonrisas-perfectas/src/com/ferp/system/Principal.java</file>
 =======
             <file>file:/C:/Users/Informatica/Desktop/scrum%20team/src/com/ferp/system/Principal.java</file>
 >>>>>>> 0b00f90 (feat: Se agrego el viewfactory y el scenemanager)
+=======
+            <file>file:/C:/Users/Informatica/Desktop/scrum%20team/src/com/ferp/system/model/Admin.java</file>
+            <file>file:/C:/Users/Informatica/Desktop/scrum%20team/src/com/ferp/system/controller/LoginController.java</file>
+            <file>file:/C:/Users/Informatica/Desktop/scrum%20team/src/com/ferp/system/utils/ViewFactory.java</file>
+            <file>file:/C:/Users/Informatica/Desktop/scrum%20team/src/com/ferp/system/Principal.java</file>
+            <file>file:/C:/Users/Informatica/Desktop/scrum%20team/src/com/ferp/system/utils/SceneManager.java</file>
+>>>>>>> 17dc27e (feat: se realizaron nuevas clases)
         </group>
     </open-files>
 </project-private>
