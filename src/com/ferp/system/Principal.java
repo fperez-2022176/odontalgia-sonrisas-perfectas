@@ -17,6 +17,7 @@ public class Principal extends Application {
     }
 
     @Override
+<<<<<<< HEAD
 
     public void start(Stage escenarioPrincipal)throws Exception {
 
@@ -31,6 +32,9 @@ public class Principal extends Application {
     escenarioPrincipal.show();
 
     
+=======
+    public void start(Stage escenarioPrincipal) {
+>>>>>>> 17dc27ecc95dabbeea3a3f3cc66f7b34a0d5f850
     SceneManager.getInstanciaSceneManager().setStagePrincipal(escenarioPrincipal);
         ViewFactory viewFacto = new ViewFactory();
         viewFacto.viewLogin();
