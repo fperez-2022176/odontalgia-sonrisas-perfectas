@@ -1,10 +1,10 @@
 package com.ferp.system.controller;
 
-<<<<<<< HEAD
 import com.ferp.system.config.ConexionDB;
 import com.ferp.system.dao.UserDAO;
 import com.ferp.system.model.User;
 import com.ferp.system.utils.ViewFactory;
+import java.io.IOException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -13,7 +13,11 @@ import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class LoginController {
 
@@ -23,19 +27,19 @@ public class LoginController {
     @FXML
     private TextField txtApellido;
 
-    private final ViewFactory viewFactory =
-            new ViewFactory();
+    private final ViewFactory viewFactory
+            = new ViewFactory();
 
     private User user;
 
     @FXML
     private void confirmar(ActionEvent event) {
 
-        String nombre =
-                txtNombre.getText().trim();
+        String nombre
+                = txtNombre.getText().trim();
 
-        String apellido =
-                txtApellido.getText().trim();
+        String apellido
+                = txtApellido.getText().trim();
 
         if (nombre.isEmpty() || apellido.isEmpty()) {
 
@@ -49,15 +53,13 @@ public class LoginController {
             return;
         }
 
-     
         try {
 
-            Connection connection =
-                    ConexionDB
+            Connection connection
+                    = ConexionDB
                             .getInstanciaConexionDB()
                             .getConnection();
 
-          
             System.out.println(
                     "CONEXION: " + connection
             );
@@ -79,10 +81,9 @@ public class LoginController {
                     apellido
             );
 
-            UserDAO userDAO =
-                    new UserDAO(connection);
+            UserDAO userDAO
+                    = new UserDAO(connection);
 
-            
             user = userDAO.guardar(user);
 
             if (user != null) {
@@ -97,7 +98,6 @@ public class LoginController {
                 );
                 viewFactory.viewTratamientos();
 
-
             } else {
 
                 JOptionPane.showMessageDialog(
@@ -108,7 +108,7 @@ public class LoginController {
                 );
             }
 
-        } catch (SQLException e) {
+               } catch (SQLException e) {
 
             e.printStackTrace();
 
@@ -120,21 +120,14 @@ public class LoginController {
                     JOptionPane.ERROR_MESSAGE
             );
         }
-=======
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-
-public class LoginController {
+    }
 
     public void abrirLogin(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(
-            getClass().getResource("/com/ferp/system/view/LoginDesarrollador.fxml")
+                getClass().getResource(
+                        "/com/ferp/system/view/LoginDesarrollador.fxml"
+                )
         );
 
         Parent root = loader.load();
@@ -147,11 +140,5 @@ public class LoginController {
 
         stage.setTitle("Login Desarrollador");
         stage.show();
->>>>>>> dae9b148d91fb48199afeacd9a6096375ca204b4
     }
 }
-
-
-
-
-    
