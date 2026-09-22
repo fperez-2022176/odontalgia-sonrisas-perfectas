@@ -129,7 +129,6 @@ public class LoginController {
                         "/com/ferp/system/view/LoginDesarrollador.fxml"
                 )
         );
-
         Parent root = loader.load();
 
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource())

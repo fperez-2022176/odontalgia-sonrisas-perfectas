@@ -4,7 +4,6 @@
  */
 package com.ferp.system.model;
 
-import javafx.scene.control.TextField;
 
 /**
  *
@@ -12,6 +11,5 @@ import javafx.scene.control.TextField;
  */
 public class Ssdfdfs {
  
-    private TextField txtHablar; 
     
 }
