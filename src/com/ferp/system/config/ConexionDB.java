@@ -30,6 +30,11 @@ public class ConexionDB{
         this.connection = connection;
     }
     
+<<<<<<< HEAD
+    
+
+}
+=======
     public static ConexionDB getInstanciaConexionDB(){
         if(instanciaConexionDB == null){
            instanciaConexionDB = new ConexionDB();
@@ -37,3 +42,4 @@ public class ConexionDB{
         return instanciaConexionDB; 
     } 
 }
+>>>>>>> 41548a25a05a0f14346d04a7aed8e87af0af99b4
