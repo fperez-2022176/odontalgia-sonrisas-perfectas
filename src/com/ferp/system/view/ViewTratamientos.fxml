@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ferp.system.controller.TratamientosController">
    <children>
       <ImageView fitHeight="715.0" fitWidth="648.0" layoutX="-13.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,7 +28,7 @@
             </TableView>
          </center>
          <bottom>
-            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregarTratamiento" text="AGREGAR TRATAMIENTO" BorderPane.alignment="CENTER" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" text="AGREGAR TRATAMIENTO" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>
