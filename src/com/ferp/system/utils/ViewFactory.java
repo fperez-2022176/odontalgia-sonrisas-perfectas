@@ -51,4 +51,9 @@ public class ViewFactory {
     public void viewLogin(){
         loadScene("login");
     }
+    
+    public void viewTratamientos() {
+
+    loadScene("tratamientos");
+}
 }
