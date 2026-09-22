@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-border-color: #3282F6; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-border-color: #3282F6; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ferp.system.controller.LoginController">
    <children>
       <Button mnemonicParsing="false" text="ADMIN" textFill="#0090ff" />
       <VBox alignment="TOP_CENTER" prefHeight="480.0" prefWidth="380.0" spacing="5.0">
@@ -24,7 +24,7 @@
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <TextField style="-fx-border-color: #4FC3F7; -fx-background-color: WHITEGRAY; -fx-border-width: 2px;">
+           <TextField fx:id="txtNombre" style="-fx-border-color: #4FC3F7; -fx-background-color: WHITESMOKE; -fx-border-width: 2px;">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
@@ -34,12 +34,12 @@
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <TextField style="-fx-border-color: #4FC3F7; -fx-background-color: WHITESMOKE; -fx-border-width: 2px;">
+            <TextField fx:id="txtApellido" style="-fx-border-color: #4FC3F7; -fx-background-color: WHITESMOKE; -fx-border-width: 2px;">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" text="CONFIRMAR" textFill="#007cff" />
+            <Button fx:id="btnInciar" mnemonicParsing="false" onAction="#confirmar" text="CONFIRMAR" textFill="#007cff" />
          </children>
       </VBox>
    </children>
