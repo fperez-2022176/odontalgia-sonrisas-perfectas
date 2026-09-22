@@ -36,15 +36,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="25.0" left="5.0" right="5.0" top="25.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnTratamientos" mnemonicParsing="false" onAction="#mostrarServicios" prefHeight="35.0" prefWidth="120.0" text="SERVICIOS">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="25.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="50.0" left="5.0" right="5.0" top="100.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="btnConfiguracion" mnemonicParsing="false" onAction="#mostrarConfiguracion" prefHeight="35.0" prefWidth="120.0" text="CONFIGURACION">
@@ -52,10 +44,10 @@
                   <Font name="System Bold" size="11.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="50.0" left="5.0" right="5.0" top="25.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnCerrarSesion" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="Cerrar Seción">
+            <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="35.0" prefWidth="120.0" text="Cerrar Seción">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

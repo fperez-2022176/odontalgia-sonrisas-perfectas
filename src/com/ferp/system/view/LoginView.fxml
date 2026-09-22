@@ -11,7 +11,7 @@
 
 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-border-color: #3282F6; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ferp.system.controller.LoginController">
    <children>
-      <Button mnemonicParsing="false" text="ADMIN" textFill="#0090ff" />
+      <Button mnemonicParsing="false" onAction="#abrirLogin" text="ADMIN" textFill="#0090ff" />
       <VBox alignment="TOP_CENTER" prefHeight="480.0" prefWidth="380.0" spacing="5.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
