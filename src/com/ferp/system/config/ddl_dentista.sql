@@ -1,4 +1,4 @@
-drop database if exists clinica_dental_in4av;
+
 create database clinica_dental_in4av;
 use clinica_dental_in4av;
  
@@ -166,3 +166,4 @@ begin
 end //
  
 delimiter ;
+

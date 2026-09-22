@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ferp.system.controller.OpcionesController">
    <top>
-      <HBox prefHeight="51.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="51.0" prefWidth="600.0" style="-fx-background-color: D9F0FF;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="52.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,22 +29,14 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="300.0" prefWidth="116.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="300.0" prefWidth="116.0" style="-fx-background-color: D9F0FF;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnInicio" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInicio" prefHeight="35.0" prefWidth="120.0" text="INICIO">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="25.0" left="5.0" right="5.0" top="25.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnTratamientos" mnemonicParsing="false" onAction="#mostrarServicios" prefHeight="35.0" prefWidth="120.0" text="SERVICIOS">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="25.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="50.0" left="5.0" right="5.0" top="100.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="btnConfiguracion" mnemonicParsing="false" onAction="#mostrarConfiguracion" prefHeight="35.0" prefWidth="120.0" text="CONFIGURACION">
@@ -52,10 +44,10 @@
                   <Font name="System Bold" size="11.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="50.0" left="5.0" right="5.0" top="25.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnCerrarSesion" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="Cerrar Seción">
+            <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="35.0" prefWidth="120.0" text="Cerrar Seción">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

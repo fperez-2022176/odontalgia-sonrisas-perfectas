@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
+
 public class Principal extends Application {
 
  
@@ -31,7 +32,10 @@ public class Principal extends Application {
     escenarioPrincipal.setTitle("Sistema");
     escenarioPrincipal.show();
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> 41548a25a05a0f14346d04a7aed8e87af0af99b4
 
     SceneManager.getInstanciaSceneManager().setStagePrincipal(escenarioPrincipal);
         ViewFactory viewFacto = new ViewFactory();
