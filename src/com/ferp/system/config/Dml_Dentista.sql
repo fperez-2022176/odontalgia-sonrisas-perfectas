@@ -1,11 +1,11 @@
-drop database if exists clinica_dental_in4av;
+
 create database clinica_dental_in4av;
 use clinica_dental_in4av;
  
 call  crear_admin("Doc Sonrisitas","Sonrisitas177H");
 
 
- 
+ call  crear_admin("Doc Sonrisitas","Sonrisitas177H");
  
 call crear_servicio(
     717,
@@ -29,3 +29,5 @@ call crear_servicio(
 );
  
 select * from servicios;
+select * from admin;
+select * from clientes;

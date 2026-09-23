@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.ferp.system.model.Tratamiento;
+import com.ferp.system.model.TratamientoData;
 import com.ferp.system.utils.AlertasCatalogo;
 
 import javafx.collections.FXCollections;
@@ -33,7 +34,8 @@ public class TratamientoVistaController implements Initializable {
 
     @FXML private Label lblAvisoAdmin;
 
-    private final ObservableList<Tratamiento> tratamientos = FXCollections.observableArrayList();
+private final ObservableList<Tratamiento> tratamientos =
+        TratamientoData.getTratamientos();
 
     private Tratamiento tratamientoSeleccionado;
 
@@ -51,22 +53,15 @@ public class TratamientoVistaController implements Initializable {
             lblAvisoAdmin.setManaged(false);
         }
 
-        cargarTratamientosIniciales();
+        
         tablaTratamientos.setItems(tratamientos);
 
         tablaTratamientos.getSelectionModel().selectedItemProperty()
                 .addListener((obs, anterior, seleccionado) -> cargarEnFormulario(seleccionado));
     }
 
-    /** Los 3 tratamientos base del catálogo. */
-    private void cargarTratamientosIniciales() {
-        tratamientos.add(new Tratamiento("TRT-001", "Limpieza profunda",
-                "Eliminación de placa bacteriana y sarro en toda la dentadura", 1200.00));
-        tratamientos.add(new Tratamiento("TRT-002", "Extracción",
-                "Procedimiento para remover una pieza dental dañada", 500.00));
-        tratamientos.add(new Tratamiento("TRT-003", "Ortodoncia",
-                "Corrección de la posición dental mediante aparatología", 18000.00));
-    }
+
+
 
     @FXML
     private void onGuardar(MouseEvent event) {

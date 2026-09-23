@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ferp.system.controller.MostrarInfoController">
    <children>
       <VBox layoutX="2.0" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -24,16 +23,16 @@
                   </Label>
                </children>
             </HBox>
-            <TableView prefHeight="264.0" prefWidth="600.0">
+            <TableView fx:id="tablaServicios" prefHeight="264.0" prefWidth="600.0">
               <columns>
-                <TableColumn prefWidth="126.0" text="SERVICIO" />
-                <TableColumn prefWidth="406.0" text="DESCRIPCION" />
-                  <TableColumn prefWidth="75.0" text="COSTO" />
+                <TableColumn fx:id="colServicio" prefWidth="126.0" text="SERVICIO" />
+                <TableColumn fx:id="colDescripcion" prefWidth="406.0" text="DESCRIPCION" />
+                  <TableColumn fx:id="colCosto" prefWidth="75.0" text="COSTO" />
               </columns>
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="CREAR">
+                  <Button mnemonicParsing="false" onAction="#crearTratamiento" text="CREAR">
                      <HBox.margin>
                         <Insets left="55.0" top="35.0" />
                      </HBox.margin>

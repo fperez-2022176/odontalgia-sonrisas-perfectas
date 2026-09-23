@@ -80,7 +80,7 @@ delimiter ;
  
  
 create table servicios(
-    id_servicio int primary key,
+    id_servicio int primary key auto_increment,
     name_service varchar(50) not null,
     descripcion varchar(200),
     precio decimal(10,2) not null

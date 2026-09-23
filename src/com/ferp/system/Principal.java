@@ -22,15 +22,10 @@ public class Principal extends Application {
 
     public void start(Stage escenarioPrincipal)throws Exception {
 
-    FXMLLoader loader = new FXMLLoader(
-        getClass().getResource("/com/ferp/system/view/opciones.fxml")
-    );
 
-    Scene scene = new Scene(loader.load());
-
-    escenarioPrincipal.setScene(scene);
     escenarioPrincipal.setTitle("Sistema");
     escenarioPrincipal.show();
+
 
 
     SceneManager.getInstanciaSceneManager().setStagePrincipal(escenarioPrincipal);
