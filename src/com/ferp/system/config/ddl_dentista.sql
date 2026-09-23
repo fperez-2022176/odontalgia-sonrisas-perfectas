@@ -13,14 +13,11 @@ create table clientes(
 delimiter //
  
 create procedure crear_cliente(
-    in p_name varchar(50),
-    in p_lastname varchar(50)
-)
+                               in p_name varchar(50),
+                               in p_lastname varchar(50))
 begin
-    insert into clientes
-    (name, lastname)
-    values
-    (p_name, p_lastname);
+    insert into clientes(name, lastname)
+    values(p_name, p_lastname);
 end //
  
 delimiter ;
