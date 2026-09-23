@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootLogin" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="350.0" styleClass="root-login"
+      stylesheets="@../css/login-desarrollador.css"
+      xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ferp.system.controller.LoginDesarrolladorController">
+    <children>
+        <ImageView fx:id="imgLogo" fitHeight="173.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true" styleClass="logo-img">
+            <image>
+                <Image url="@../resources/images/developer.jpg" />
+            </image>
+        </ImageView>
+
+        <Label fx:id="lblUsuario" text="USUARIO" styleClass="lbl-campo">
+            <font>
+                <Font name="System Bold Italic" size="14.0" />
+            </font>
+            <padding>
+                <Insets top="50.0" />
+            </padding>
+        </Label>
+
+        <TextField fx:id="txtUsuario" prefHeight="25.0" prefWidth="281.0" styleClass="txt-input" />
+
+        <Label fx:id="lblContrasena" text="CONTRASEÑA" styleClass="lbl-campo">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font>
+        </Label>
+
+        <PasswordField fx:id="pwdClave" styleClass="txt-input" />
+
+        <HBox fx:id="hboxBotones" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-botones">
+            <children>
+                <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#volverLogin" text="CANCELAR" styleClass="btn-cancelar">
+                    <HBox.margin>
+                        <Insets top="25.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btnIniciarSesion" mnemonicParsing="false" onAction="#irAOpciones" text="INICIAR SECION" styleClass="btn-iniciar">
+                    <HBox.margin>
+                        <Insets left="15.0" top="25.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</VBox>
