@@ -8,109 +8,49 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<<<<<<< HEAD
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="450.0" spacing="10.0" styleClass="root" stylesheets="@../resources/styles/LoginViewCSS.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
-
-    <children>
-
-        <VBox alignment="CENTER" prefWidth="360.0" spacing="10.0" styleClass="card">
-
-            <children>
-
-                <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-
-                    <image>
-                        <Image url="@../resources/images/Captura%20de%20pantalla%202026-09-08%20141154.jpg" />
-                    </image>
-
-                </ImageView>
-
-                <Label styleClass="title" text="SONRISAS PERFECTAS" />
-
-                <Label styleClass="subtitle" text="Registro de paciente" />
-
-                <Label styleClass="section-title" text="DATOS PERSONALES">
-                    <VBox.margin>
-                        <Insets bottom="5.0" top="15.0" />
-                    </VBox.margin>
-                </Label>
-
-                <VBox alignment="CENTER_LEFT" prefWidth="300.0" spacing="5.0">
-
-                    <children>
-
-                        <Label styleClass="input-label" text="Nombre" />
-
-                        <TextField promptText="Ingrese su nombre" styleClass="text-field" />
-
-                    </children>
-
-                </VBox>
-
-                <VBox alignment="CENTER_LEFT" prefWidth="300.0" spacing="5.0">
-
-                    <children>
-
-                        <Label styleClass="input-label" text="Apellido" />
-
-                        <TextField promptText="Ingrese su apellido" styleClass="text-field" />
-
-                    </children>
-
-                </VBox>
-
-                <Button prefWidth="300.0" styleClass="confirm-button" text="CONFIRMAR REGISTRO">
-
-                    <VBox.margin>
-                        <Insets top="15.0" />
-                    </VBox.margin>
-
-                </Button>
-
-                <Button styleClass="admin-button" text="Acceso administrativo" />
-
-                <Label styleClass="footer" text="© 2026 Sonrisas Perfectas" />
-
-            </children>
-
-        </VBox>
-
-    </children>
-
-=======
-<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-border-color: #3282F6; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ferp.system.controller.LoginController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="450.0" spacing="10.0" styleClass="root" stylesheets="@../resources/styles/LoginViewCSS.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ferp.system.controller.LoginController">
    <children>
-      <Button mnemonicParsing="false" onAction="#abrirLogin" text="ADMIN" textFill="#0090ff" />
-      <VBox alignment="TOP_CENTER" prefHeight="480.0" prefWidth="380.0" spacing="5.0">
+      <VBox alignment="CENTER" prefWidth="360.0" spacing="10.0" styleClass="card">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/images/Captura%20de%20pantalla%202026-09-08%20141154.jpg" />
                </image>
             </ImageView>
-            <Label text="INGRESE NOMBRE">
-               <font>
-                  <Font name="Arial Black" size="18.0" />
-               </font>
-            </Label>
-           <TextField fx:id="txtNombre" style="-fx-border-color: #4FC3F7; -fx-background-color: WHITESMOKE; -fx-border-width: 2px;">
+            
+            <Label styleClass="title" text="SONRISAS PERFECTAS" />
+            <Label styleClass="subtitle" text="Registro de paciente" />
+            
+            <Label styleClass="section-title" text="DATOS PERSONALES">
                <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="5.0" top="15.0" />
                </VBox.margin>
-            </TextField>
-            <Label text="INGRESE APELLIDO">
-               <font>
-                  <Font name="Arial Black" size="18.0" />
-               </font>
             </Label>
-            <TextField fx:id="txtApellido" style="-fx-border-color: #4FC3F7; -fx-background-color: WHITESMOKE; -fx-border-width: 2px;">
+            
+            <VBox alignment="CENTER_LEFT" prefWidth="300.0" spacing="5.0">
+               <children>
+                  <Label styleClass="input-label" text="Nombre" />
+                  <TextField fx:id="txtNombre" promptText="Ingrese su nombre" styleClass="text-field" />
+               </children>
+            </VBox>
+            
+            <VBox alignment="CENTER_LEFT" prefWidth="300.0" spacing="5.0">
+               <children>
+                  <Label styleClass="input-label" text="Apellido" />
+                  <TextField fx:id="txtApellido" promptText="Ingrese su apellido" styleClass="text-field" />
+               </children>
+            </VBox>
+            
+            <Button fx:id="btnInciar" onAction="#confirmar" prefWidth="300.0" styleClass="confirm-button" text="CONFIRMAR REGISTRO">
                <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
-            </TextField>
-            <Button fx:id="btnInciar" mnemonicParsing="false" onAction="#confirmar" text="CONFIRMAR" textFill="#007cff" />
+            </Button>
+            
+            <Button onAction="#abrirLogin" prefWidth="300.0" styleClass="admin-button" text="Acceso administrativo" />
+            
+            <Label styleClass="footer" text="© 2026 Sonrisas Perfectas" />
          </children>
       </VBox>
    </children>
->>>>>>> 41548a25a05a0f14346d04a7aed8e87af0af99b4
 </VBox>

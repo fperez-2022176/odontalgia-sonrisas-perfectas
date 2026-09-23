@@ -1,5 +1,6 @@
 package com.ferp.system.controller;
 
+
 import com.ferp.system.config.ConexionDB;
 import com.ferp.system.dao.UserDAO;
 import com.ferp.system.model.User;
@@ -32,6 +33,38 @@ public class LoginController {
 
     private User user;
 
+    @FXML
+        public void abrirLogin(ActionEvent event) throws IOException {
+ 
+        FXMLLoader loader = new FXMLLoader(
+
+                getClass().getResource(
+
+                        "/com/ferp/system/view/LoginDesarrollador.fxml"
+
+                )
+
+        );
+
+        Parent root = loader.load();
+ 
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource())
+
+                .getScene()
+
+                .getWindow();
+ 
+        stage.setScene(new Scene(root));
+ 
+        stage.setTitle("Login Desarrollador");
+
+        stage.show();
+
+    }
+ 
+    
+    
+    
     @FXML
     private void confirmar(ActionEvent event) {
 
@@ -120,24 +153,13 @@ public class LoginController {
                     JOptionPane.ERROR_MESSAGE
             );
         }
+
+    }
+    
+        
+    
+
+    
+        
     }
 
-    public void abrirLogin(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(
-                        "/com/ferp/system/view/LoginDesarrollador.fxml"
-                )
-        );
-        Parent root = loader.load();
-
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource())
-                .getScene()
-                .getWindow();
-
-        stage.setScene(new Scene(root));
-
-        stage.setTitle("Login Desarrollador");
-        stage.show();
-    }
-}
