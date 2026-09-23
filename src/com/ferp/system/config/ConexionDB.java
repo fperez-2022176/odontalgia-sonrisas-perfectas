@@ -4,38 +4,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+public class ConexionDB {
 
-public class ConexionDB{
     private static ConexionDB instanciaConexionDB;
     private Connection connection;
-    
-    private ConexionDB(){
-        try{
+
+    private ConexionDB() {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://" + Enviroment.LOCATION_SERVICE + "/" + Enviroment.DATA_BASE, Enviroment.USER, Enviroment.PASSWORD);
-        }catch(ClassNotFoundException classNotFound){
+        } catch (ClassNotFoundException classNotFound) {
             System.out.println("Error de clase no encontrada");
-        }catch(SQLException sqlException){
+        } catch (SQLException sqlException) {
             System.out.println("Error de conexion sql");
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Error padre" + e.getMessage());
-        } 
+        }
     }
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         return connection;
     }
 
-    public void setConnection(Connection connection){
+    public void setConnection(Connection connection) {
         this.connection = connection;
     }
-    
 
-    public static ConexionDB getInstanciaConexionDB(){
-        if(instanciaConexionDB == null){
-           instanciaConexionDB = new ConexionDB();
+    public static ConexionDB getInstanciaConexionDB() {
+        if (instanciaConexionDB == null) {
+            instanciaConexionDB = new ConexionDB();
         }
-        return instanciaConexionDB; 
-    } 
+        return instanciaConexionDB;
+    }
 }
 

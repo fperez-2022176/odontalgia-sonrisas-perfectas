@@ -1,9 +1,5 @@
 package com.ferp.system.model;
 
-/**
- * Modelo simple de un tratamiento del catálogo.
- * Sin dependencias de base de datos: se usa directamente en memoria.
- */
 public class Tratamiento {
 
     private String codigo;
