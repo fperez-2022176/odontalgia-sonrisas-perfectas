@@ -1,4 +1,6 @@
 package com.ferp.system.controller;
+
+
 import com.ferp.system.config.ConexionDB;
 import com.ferp.system.dao.UserDAO;
 import com.ferp.system.model.User;
@@ -26,11 +28,12 @@ public class LoginController {
     @FXML
     private TextField txtApellido;
 
-    private final ViewFactory viewFactory =
-            new ViewFactory();
+    private final ViewFactory viewFactory
+            = new ViewFactory();
 
     private User user;
 
+    @FXML
         public void abrirLogin(ActionEvent event) throws IOException {
  
         FXMLLoader loader = new FXMLLoader(
@@ -65,11 +68,11 @@ public class LoginController {
     @FXML
     private void confirmar(ActionEvent event) {
 
-        String nombre =
-                txtNombre.getText().trim();
+        String nombre
+                = txtNombre.getText().trim();
 
-        String apellido =
-                txtApellido.getText().trim();
+        String apellido
+                = txtApellido.getText().trim();
 
         if (nombre.isEmpty() || apellido.isEmpty()) {
 
@@ -83,15 +86,13 @@ public class LoginController {
             return;
         }
 
-     
         try {
 
-            Connection connection =
-                    ConexionDB
+            Connection connection
+                    = ConexionDB
                             .getInstanciaConexionDB()
                             .getConnection();
 
-          
             System.out.println(
                     "CONEXION: " + connection
             );
@@ -113,10 +114,9 @@ public class LoginController {
                     apellido
             );
 
-            UserDAO userDAO =
-                    new UserDAO(connection);
+            UserDAO userDAO
+                    = new UserDAO(connection);
 
-            
             user = userDAO.guardar(user);
 
             if (user != null) {
@@ -131,7 +131,6 @@ public class LoginController {
                 );
                 viewFactory.viewTratamientos();
 
-
             } else {
 
                 JOptionPane.showMessageDialog(
@@ -142,7 +141,7 @@ public class LoginController {
                 );
             }
 
-        } catch (SQLException e) {
+               } catch (SQLException e) {
 
             e.printStackTrace();
 
@@ -155,12 +154,12 @@ public class LoginController {
             );
         }
 
-
-   
     }
-}
-
-
-
+    
+        
+    
 
     
+        
+    }
+

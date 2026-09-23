@@ -29,13 +29,13 @@
             <Insets top="50.0" />
          </padding>
       </Label>
-      <TextField prefHeight="25.0" prefWidth="281.0" />
+      <TextField fx:id="txtUsuario" prefHeight="25.0" prefWidth="281.0" />
       <Label text="CONTRASEÑA">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <PasswordField />
+      <PasswordField fx:id="pwdClave" />
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button mnemonicParsing="false" onAction="#volverLogin" text="CANCELAR">

@@ -27,6 +27,7 @@ public class Principal extends Application {
     escenarioPrincipal.show();
 
 
+
     SceneManager.getInstanciaSceneManager().setStagePrincipal(escenarioPrincipal);
         ViewFactory viewFacto = new ViewFactory();
         viewFacto.viewLogin();
