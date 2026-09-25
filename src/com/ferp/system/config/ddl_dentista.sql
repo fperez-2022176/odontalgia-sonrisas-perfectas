@@ -1,4 +1,4 @@
-
+drop database clinica_dental_in4av;
 create database clinica_dental_in4av;
 use clinica_dental_in4av;
  
@@ -10,7 +10,7 @@ create table clientes(
 );
  
  
-delimiter //
+delimiter $$
  
 create procedure crear_cliente(
                                in p_name varchar(50),
@@ -19,22 +19,21 @@ begin
     insert into clientes(name, lastname)
     values(p_name, p_lastname);
 end //
- 
 delimiter ;
  
  
-delimiter //
+delimiter $$
  
 create procedure mostrar_clientes()
 begin
     select *
     from clientes;
-end //
+end $$
  
 delimiter ;
  
  
-delimiter //
+delimiter $$
  
 create procedure leer_cliente(
     in p_id_cliente int
@@ -48,7 +47,7 @@ end //
 delimiter ;
  
  
-delimiter //
+delimiter $$
  
 create procedure editar_cliente(
     in p_id_cliente int,
@@ -66,7 +65,7 @@ end //
 delimiter ;
  
  
-delimiter //
+delimiter $$
  
 create procedure eliminar_cliente(
     in p_id_cliente int
@@ -74,9 +73,10 @@ create procedure eliminar_cliente(
 begin
     delete from clientes
     where id_cliente = p_id_cliente;
-end //
+end $$
  
 delimiter ;
+
  
  
 create table servicios(
@@ -86,24 +86,23 @@ create table servicios(
     precio decimal(10,2) not null
 );
  
+
  
-delimiter //
- 
+delimiter $$
+
 create procedure crear_servicio(
-    in p_id_servicio int,
     in p_name_service varchar(50),
     in p_descripcion varchar(200),
     in p_precio decimal(10,2)
 )
 begin
     insert into servicios
-    (id_servicio, name_service, descripcion, precio)
+    (name_service, descripcion, precio)
     values
-    (p_id_servicio, p_name_service, p_descripcion, p_precio);
-end //
- 
-delimiter ;
- 
+    (p_name_service, p_descripcion, p_precio);
+end $$
+
+delimiter ; 
  
 create table admin(
     name_clave varchar(50) primary key,

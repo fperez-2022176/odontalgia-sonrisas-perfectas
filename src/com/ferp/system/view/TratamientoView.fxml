@@ -11,12 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="820.0"
-            styleClass="tratamiento-root"
-            stylesheets="@../resources/styles/TratamientoStyles.css"
-            xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.ferp.system.controller.TratamientoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" styleClass="tratamiento-root" stylesheets="@../resources/styles/TratamientoStyles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ferp.system.controller.TratamientoVistaController">
 
     <top>
         <VBox spacing="4.0" styleClass="tratamiento-header">
@@ -52,16 +47,17 @@
             </padding>
             <children>
                 <Label styleClass="etiqueta" text="Código interno" />
-                <TextField fx:id="txtCodigo" promptText="Ej. TRT-004" />
+               
+                <TextField fx:id="txtCodigo" editable="false" promptText="Automático" />
 
                 <Label styleClass="etiqueta" text="Nombre del tratamiento" />
-                <TextField fx:id="txtNombre" promptText="Ej. Blanqueamiento dental" />
+                <TextField fx:id="txtNombre" promptText="Ej. Extracción dental" />
 
                 <Label styleClass="etiqueta" text="Descripción" />
                 <TextArea fx:id="txtDescripcion" prefRowCount="2" promptText="Detalle del procedimiento" wrapText="true" />
 
                 <Label styleClass="etiqueta" text="Costo estándar (Q)" />
-                <TextField fx:id="txtCosto" promptText="Ej. 850.00" />
+                <TextField fx:id="txtCosto" promptText="Ej. 500.00" />
 
                 <HBox spacing="10.0" styleClass="barra-botones">
                     <children>
