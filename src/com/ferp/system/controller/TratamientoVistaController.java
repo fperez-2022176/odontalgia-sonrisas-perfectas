@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.ferp.system.dao.TratamientoDAO;
 import com.ferp.system.model.Tratamiento;
+import com.ferp.system.model.TratamientoData;
 import com.ferp.system.utils.AlertasCatalogo;
 import com.ferp.system.utils.ViewFactory;
 
@@ -49,9 +50,14 @@ public class TratamientoVistaController implements Initializable {
     @FXML
     private Label lblAvisoAdmin;
 
+
     private final ObservableList<Tratamiento> tratamientos = FXCollections.observableArrayList();
     private final TratamientoDAO tratamientoDAO = new TratamientoDAO();
     private final ViewFactory viewFactory = new ViewFactory();
+
+private final ObservableList<Tratamiento> tratamientos =
+        TratamientoData.getTratamientos();
+
 
  @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,6 +75,7 @@ public class TratamientoVistaController implements Initializable {
         }
 
         cargarDatosDesdeBaseDeDatos();
+
         tablaTratamientos.setItems(tratamientos);
 
         
@@ -87,6 +94,7 @@ public class TratamientoVistaController implements Initializable {
             tratamientos.addAll(listaDB);
         }
     }
+
 
   @FXML
     private void onGuardar(MouseEvent event) {

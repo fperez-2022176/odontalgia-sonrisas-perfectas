@@ -2,6 +2,8 @@
 create database clinica_dental_in4av;
 use clinica_dental_in4av;
  
+call  crear_admin("Doc Sonrisitas","Sonrisitas177H");
+
 
  call  crear_admin("Doc Sonrisitas","Sonrisitas177H");
  

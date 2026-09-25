@@ -13,16 +13,12 @@ create table clientes(
 delimiter $$
  
 create procedure crear_cliente(
-    in p_name varchar(50),
-    in p_lastname varchar(50)
-)
+                               in p_name varchar(50),
+                               in p_lastname varchar(50))
 begin
-    insert into clientes
-    (name, lastname)
-    values
-    (p_name, p_lastname);
-end $$
- 
+    insert into clientes(name, lastname)
+    values(p_name, p_lastname);
+end //
 delimiter ;
  
  
@@ -81,8 +77,10 @@ end $$
  
 delimiter ;
 
- create table servicios(
-    id_servicio int auto_increment primary key,
+ 
+ 
+create table servicios(
+    id_servicio int primary key auto_increment,
     name_service varchar(50) not null,
     descripcion varchar(200),
     precio decimal(10,2) not null
