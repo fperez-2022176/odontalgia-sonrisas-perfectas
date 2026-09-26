@@ -1,15 +1,11 @@
 package com.ferp.system.controller;
 
-import com.ferp.system.config.ConexionDB;
+import com.ferp.system.repository.GuardarTratamientos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class CrearTratamiento {
 
@@ -21,6 +17,9 @@ public class CrearTratamiento {
 
     @FXML
     private TextField txtPrecio;
+
+    private GuardarTratamientos guardarTratamiento =
+            new GuardarTratamientos();
 
     @FXML
     private void guardarTratamiento(ActionEvent event) {
@@ -69,24 +68,10 @@ public class CrearTratamiento {
             return;
         }
 
-        String sql = """
-                INSERT INTO servicios (name_service, descripcion, precio)
-                VALUES (?, ?, ?)
-                """;
+        boolean guardado =
+                guardarTratamiento.guardar(nombre, descripcion, precio);
 
-        try {
-
-            Connection connection
-                    = ConexionDB.getInstanciaConexionDB().getConnection();
-
-            PreparedStatement statement
-                    = connection.prepareStatement(sql);
-
-            statement.setString(1, nombre);
-            statement.setString(2, descripcion);
-            statement.setDouble(3, precio);
-
-            statement.executeUpdate();
+        if (guardado) {
 
             mostrarMensaje(
                     Alert.AlertType.INFORMATION,
@@ -96,9 +81,7 @@ public class CrearTratamiento {
 
             cerrarVentana();
 
-        } catch (SQLException e) {
-
-            e.printStackTrace();
+        } else {
 
             mostrarMensaje(
                     Alert.AlertType.ERROR,
@@ -106,7 +89,6 @@ public class CrearTratamiento {
                     "No se pudo guardar el tratamiento."
             );
         }
-
     }
 
     @FXML

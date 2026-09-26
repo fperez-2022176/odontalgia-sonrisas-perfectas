@@ -7,27 +7,17 @@ import java.sql.SQLException;
 public class ConexionDB {
 
     private static ConexionDB instanciaConexionDB;
+
     private Connection connection;
+
 
     private ConexionDB() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + Enviroment.LOCATION_SERVICE + "/" + Enviroment.DATA_BASE, Enviroment.USER, Enviroment.PASSWORD);
-        } catch (ClassNotFoundException classNotFound) {
-            System.out.println("Error de clase no encontrada");
-        } catch (SQLException sqlException) {
-            System.out.println("Error de conexion sql");
-        } catch (Exception e) {
-            System.out.println("Error padre" + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error: clase MySQL no encontrada.");
+            e.printStackTrace();
         }
-    }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public void setConnection(Connection connection) {
-        this.connection = connection;
     }
 
     public static ConexionDB getInstanciaConexionDB() {
@@ -35,6 +25,17 @@ public class ConexionDB {
             instanciaConexionDB = new ConexionDB();
         }
         return instanciaConexionDB;
+    }
+
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(
+                "jdbc:mysql://"
+                        + Enviroment.LOCATION_SERVICE
+                        + "/"
+                        + Enviroment.DATA_BASE,
+                Enviroment.USER,
+                Enviroment.PASSWORD
+        );
     }
 }
 
