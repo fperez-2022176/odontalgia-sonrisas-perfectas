@@ -103,7 +103,33 @@ begin
 end //
  
 delimiter ;
- 
+
+delimiter //
+
+DELIMITER //	
+	create procedure editar_servicio(
+		IN p_id_servicio INT,
+		IN p_name_service VARCHAR(50),
+		IN p_descripcion VARCHAR(200),
+		IN p_precio DECIMAL(10,2))
+	begin
+		update servicios
+		set name_service = p_name_service,
+        descripcion = p_descripcion,
+        precio = p_precio
+			where id_servicio = p_id_servicio;
+	end //
+DELIMITER ;
+
+ DELIMITER //
+	CREATE PROCEDURE eliminar_servicio(
+		IN p_id_servicio INT)
+	BEGIN
+		DELETE FROM servicios
+		WHERE id_servicio = p_id_servicio;
+	END //
+
+DELIMITER ;
  
 create table admin(
     name_clave varchar(50) primary key,
