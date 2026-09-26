@@ -26,8 +26,6 @@ public class LoginDesarrolladorController {
     @FXML
     private PasswordField pwdClave;
 
-
-    // Botón para volver al Login
     public void volverLogin(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(
@@ -49,17 +47,12 @@ public class LoginDesarrolladorController {
         stage.show();
     }
 
-
-    // Botón "INICIAR SESIÓN"
     @FXML
     public void irAOpciones(ActionEvent event) throws IOException {
 
-        // Obtener los datos escritos por el usuario
         String usuario = txtUsuario.getText();
         String contrasena = pwdClave.getText();
 
-
-        // Comprobar campos vacíos
         if (usuario.isEmpty() || contrasena.isEmpty()) {
 
             mostrarAlerta(
@@ -70,8 +63,6 @@ public class LoginDesarrolladorController {
             return;
         }
 
-
-        // Consulta a la tabla admin
         String sql = """
                 SELECT *
                 FROM admin
@@ -79,29 +70,19 @@ public class LoginDesarrolladorController {
                 AND pass_admin = ?
                 """;
 
-
         try {
 
-            // Obtener la conexión que ya tienes creada
-            Connection conexion =
-                    ConexionDB.getInstanciaConexionDB().getConnection();
+            Connection conexion
+                    = ConexionDB.getInstanciaConexionDB().getConnection();
 
+            PreparedStatement ps
+                    = conexion.prepareStatement(sql);
 
-            // Preparar la consulta
-            PreparedStatement ps =
-                    conexion.prepareStatement(sql);
-
-
-            // Colocar los datos en los ?
             ps.setString(1, usuario);
             ps.setString(2, contrasena);
 
-
-            // Ejecutar consulta
             ResultSet rs = ps.executeQuery();
 
-
-            // Comprobar si encontró al usuario
             if (rs.next()) {
 
                 FXMLLoader loader = new FXMLLoader(
@@ -112,20 +93,15 @@ public class LoginDesarrolladorController {
 
                 Parent root = loader.load();
 
-
-                // Obtener ventana actual
                 Stage stage = (Stage) ((Node) event.getSource())
                         .getScene()
                         .getWindow();
 
-
-                // Cambiar a opciones.fxml
                 stage.setScene(new Scene(root));
 
                 stage.setTitle("Opciones de Desarrollador");
 
                 stage.show();
-
 
             } else {
                 mostrarAlerta(
@@ -134,11 +110,9 @@ public class LoginDesarrolladorController {
                 );
             }
 
-
             // Cerrar recursos
             rs.close();
             ps.close();
-
 
         } catch (Exception e) {
 
@@ -151,8 +125,6 @@ public class LoginDesarrolladorController {
         }
     }
 
-
-    // Método para mostrar alertas
     private void mostrarAlerta(String titulo, String mensaje) {
 
         Alert alerta = new Alert(Alert.AlertType.ERROR);

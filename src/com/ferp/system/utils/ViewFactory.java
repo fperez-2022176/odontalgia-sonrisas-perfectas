@@ -39,7 +39,7 @@ public class ViewFactory {
                 case "login" ->
                     scene = loadFileFXML("LoginView.fxml", 400, 500);
                 case "tratamientos" ->
-                    scene = loadFileFXML("ViewTratamientos.fxml", 600, 400); 
+                    scene = loadFileFXML("TratamientoView.fxml", 600, 400); 
                 default ->
                     scene = loadFileFXML("LoginView.fxml", 400, 500);
             }

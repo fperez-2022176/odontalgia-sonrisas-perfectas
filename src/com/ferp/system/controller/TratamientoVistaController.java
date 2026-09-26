@@ -1,16 +1,22 @@
 package com.ferp.system.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import com.ferp.system.dao.TratamientoDAO;
 import com.ferp.system.model.Tratamiento;
 import com.ferp.system.model.TratamientoData;
 import com.ferp.system.utils.AlertasCatalogo;
+import com.ferp.system.utils.ViewFactory;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,67 +24,89 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class TratamientoVistaController implements Initializable {
 
-    @FXML private TableView<Tratamiento> tablaTratamientos;
-    @FXML private TableColumn<Tratamiento, String> colCodigo;
-    @FXML private TableColumn<Tratamiento, String> colNombre;
-    @FXML private TableColumn<Tratamiento, String> colDescripcion;
-    @FXML private TableColumn<Tratamiento, Double> colCosto;
+    @FXML
+    private TableView<Tratamiento> tablaTratamientos;
+    @FXML
+    private TableColumn<Tratamiento, String> colCodigo;
+    @FXML
+    private TableColumn<Tratamiento, String> colNombre;
+    @FXML
+    private TableColumn<Tratamiento, String> colDescripcion;
+    @FXML
+    private TableColumn<Tratamiento, Double> colCosto;
 
-    @FXML private TextField txtCodigo;
-    @FXML private TextField txtNombre;
-    @FXML private TextArea txtDescripcion;
-    @FXML private TextField txtCosto;
+    @FXML
+    private TextField txtCodigo;
+    @FXML
+    private TextField txtNombre;
+    @FXML
+    private TextArea txtDescripcion;
+    @FXML
+    private TextField txtCosto;
+    @FXML
+    private Label lblAvisoAdmin;
 
-    @FXML private Label lblAvisoAdmin;
+
+    private final ObservableList<Tratamiento> tratamientos = FXCollections.observableArrayList();
+    private final TratamientoDAO tratamientoDAO = new TratamientoDAO();
+    private final ViewFactory viewFactory = new ViewFactory();
 
 private final ObservableList<Tratamiento> tratamientos =
         TratamientoData.getTratamientos();
 
-    private Tratamiento tratamientoSeleccionado;
 
-    @Override
+ @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         colCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
 
-        // Sin login ni aviso de rol: el label queda oculto.
+        
+        tablaTratamientos.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
+
         if (lblAvisoAdmin != null) {
             lblAvisoAdmin.setVisible(false);
             lblAvisoAdmin.setManaged(false);
         }
 
-        
+        cargarDatosDesdeBaseDeDatos();
+
         tablaTratamientos.setItems(tratamientos);
 
-        tablaTratamientos.getSelectionModel().selectedItemProperty()
-                .addListener((obs, anterior, seleccionado) -> cargarEnFormulario(seleccionado));
+        
+        tablaTratamientos.setOnMouseClicked(event -> {
+            ObservableList<Tratamiento> seleccionados = tablaTratamientos.getSelectionModel().getSelectedItems();
+            if (seleccionados.size() == 1) {
+                cargarEnFormulario(seleccionados.get(0));
+            }
+        });
+    }
+
+    private void cargarDatosDesdeBaseDeDatos() {
+        tratamientos.clear();
+        List<Tratamiento> listaDB = tratamientoDAO.obtenerServicios();
+        if (listaDB != null) {
+            tratamientos.addAll(listaDB);
+        }
     }
 
 
-
-
-    @FXML
+  @FXML
     private void onGuardar(MouseEvent event) {
         try {
-            String codigo = txtCodigo.getText() == null ? "" : txtCodigo.getText().trim();
+            
             String nombre = txtNombre.getText() == null ? "" : txtNombre.getText().trim();
             String descripcion = txtDescripcion.getText() == null ? "" : txtDescripcion.getText().trim();
             String costoTexto = txtCosto.getText() == null ? "" : txtCosto.getText().trim();
 
-            if (codigo.isEmpty() || nombre.isEmpty() || descripcion.isEmpty() || costoTexto.isEmpty()) {
-                AlertasCatalogo.mostrarAdvertencia("Campos incompletos", "Todos los campos son obligatorios.");
-                return;
-            }
-
-            if (existeCodigo(codigo)) {
-                AlertasCatalogo.mostrarAdvertencia("Código duplicado",
-                        "Ya existe un tratamiento con el código '" + codigo + "'.");
+           
+            if (nombre.isEmpty() || descripcion.isEmpty() || costoTexto.isEmpty()) {
+                AlertasCatalogo.mostrarAdvertencia("Campos incompletos", "Todos los campos (Nombre, Descripción y Costo) son obligatorios.");
                 return;
             }
 
@@ -89,73 +117,49 @@ private final ObservableList<Tratamiento> tratamientos =
                     throw new NumberFormatException();
                 }
             } catch (NumberFormatException e) {
-                AlertasCatalogo.mostrarAdvertencia("Costo inválido",
-                        "El costo debe ser un número mayor a cero. Ejemplo: 850.00");
+                AlertasCatalogo.mostrarAdvertencia("Costo inválido", "El costo debe ser un número mayor a cero.");
                 return;
             }
 
-            Tratamiento nuevo = new Tratamiento(codigo, nombre, descripcion, costo);
-            tratamientos.add(nuevo);
-            tablaTratamientos.getSelectionModel().select(nuevo);
-            tablaTratamientos.scrollTo(nuevo);
+            Tratamiento nuevo = new Tratamiento("0", nombre, descripcion, costo);
 
-            // Mensaje mostrando exactamente lo que se agregó
-            String detalle = String.format(
-                    "Código: %s%nNombre: %s%nDescripción: %s%nCosto: Q%.2f",
-                    nuevo.getCodigo(), nuevo.getNombre(), nuevo.getDescripcion(), nuevo.getCosto());
-            AlertasCatalogo.mostrarExito("Tratamiento agregado", detalle);
+            if (tratamientoDAO.insertarServicio(nuevo)) {
+                
+                cargarDatosDesdeBaseDeDatos();
+                
+                AlertasCatalogo.mostrarExito("Servicio Guardado",
+                        String.format("Se registró correctamente en la base de datos:%n- Nombre: %s%n- Costo: Q%.2f",
+                                nuevo.getNombre(), nuevo.getCosto()));
 
-            limpiarCampos();
+                limpiarCampos();
+            } else {
+                AlertasCatalogo.mostrarError("Error", "No se pudo guardar el servicio en la base de datos.");
+            }
 
         } catch (Exception e) {
-            AlertasCatalogo.mostrarError("Error al guardar", "Ocurrió un error inesperado: " + e.getMessage());
+            AlertasCatalogo.mostrarError("Error crítico", "Ocurrió un error: " + e.getMessage());
         }
     }
 
     @FXML
     private void onActualizar(MouseEvent event) {
-        try {
-            if (tratamientoSeleccionado == null) {
-                AlertasCatalogo.mostrarAdvertencia("Sin selección",
-                        "Selecciona un tratamiento de la tabla antes de actualizar.");
-                return;
+        ObservableList<Tratamiento> seleccionados = tablaTratamientos.getSelectionModel().getSelectedItems();
+        if (seleccionados.isEmpty()) {
+            AlertasCatalogo.mostrarAdvertencia("Sin selección", "Selecciona al menos un tratamiento para procesar.");
+            return;
+        }
+
+        if (seleccionados.size() > 1) {
+            StringBuilder sb = new StringBuilder("Ha seleccionado " + seleccionados.size() + " tratamientos:\n");
+            double total = 0;
+            for (Tratamiento t : seleccionados) {
+                sb.append(String.format("• [%s] %s (Q%.2f)%n", t.getCodigo(), t.getNombre(), t.getCosto()));
+                total += t.getCosto();
             }
-
-            String codigo = txtCodigo.getText().trim();
-            String nombre = txtNombre.getText().trim();
-            String descripcion = txtDescripcion.getText().trim();
-            String costoTexto = txtCosto.getText().trim();
-
-            if (codigo.isEmpty() || nombre.isEmpty() || descripcion.isEmpty() || costoTexto.isEmpty()) {
-                AlertasCatalogo.mostrarAdvertencia("Campos incompletos", "Todos los campos son obligatorios.");
-                return;
-            }
-
-            double costo;
-            try {
-                costo = Double.parseDouble(costoTexto.replace(",", "."));
-                if (costo <= 0) {
-                    throw new NumberFormatException();
-                }
-            } catch (NumberFormatException e) {
-                AlertasCatalogo.mostrarAdvertencia("Costo inválido",
-                        "El costo debe ser un número mayor a cero. Ejemplo: 850.00");
-                return;
-            }
-
-            tratamientoSeleccionado.setCodigo(codigo);
-            tratamientoSeleccionado.setNombre(nombre);
-            tratamientoSeleccionado.setDescripcion(descripcion);
-            tratamientoSeleccionado.setCosto(costo);
-
-            tablaTratamientos.refresh();
-            AlertasCatalogo.mostrarExito("Tratamiento actualizado",
-                    "Se actualizó correctamente '" + nombre + "'.");
-
-            limpiarCampos();
-
-        } catch (Exception e) {
-            AlertasCatalogo.mostrarError("Error al actualizar", "Ocurrió un error inesperado: " + e.getMessage());
+            sb.append(String.format("%nCosto Total Acumulado: Q%.2f", total));
+            AlertasCatalogo.mostrarExito("Resumen de Selección Múltiple", sb.toString());
+        } else {
+            AlertasCatalogo.mostrarExito("Tratamiento Seleccionado", "Tratamiento único seleccionado: " + seleccionados.get(0).getNombre());
         }
     }
 
@@ -166,17 +170,21 @@ private final ObservableList<Tratamiento> tratamientos =
 
     @FXML
     private void onVolver(MouseEvent event) {
-        // Sin pantalla de login: este proyecto solo muestra el catálogo,
-        // así que "Volver" simplemente cierra la ventana.
-        ((javafx.stage.Stage) tablaTratamientos.getScene().getWindow()).close();
-    }
+        try {
 
-    private boolean existeCodigo(String codigo) {
-        return tratamientos.stream().anyMatch(t -> t.getCodigo().equalsIgnoreCase(codigo));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ferp/system/view/LoginView.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) tablaTratamientos.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Sonrisas Perfectas - Login");
+            stage.show();
+        } catch (Exception e) {
+            AlertasCatalogo.mostrarError("Error de navegación", "No se pudo regresar al login: " + e.getMessage());
+        }
     }
 
     private void cargarEnFormulario(Tratamiento t) {
-        this.tratamientoSeleccionado = t;
         if (t == null) {
             return;
         }
@@ -191,7 +199,6 @@ private final ObservableList<Tratamiento> tratamientos =
         txtNombre.clear();
         txtDescripcion.clear();
         txtCosto.clear();
-        tratamientoSeleccionado = null;
         tablaTratamientos.getSelectionModel().clearSelection();
     }
 }

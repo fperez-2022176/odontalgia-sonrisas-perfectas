@@ -8,6 +8,9 @@ public class ConexionDB {
 
     private static ConexionDB instanciaConexionDB;
 
+    private Connection connection;
+
+
     private ConexionDB() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -18,16 +21,13 @@ public class ConexionDB {
     }
 
     public static ConexionDB getInstanciaConexionDB() {
-
         if (instanciaConexionDB == null) {
             instanciaConexionDB = new ConexionDB();
         }
-
         return instanciaConexionDB;
     }
 
     public Connection getConnection() throws SQLException {
-
         return DriverManager.getConnection(
                 "jdbc:mysql://"
                         + Enviroment.LOCATION_SERVICE

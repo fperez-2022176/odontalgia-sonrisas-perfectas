@@ -1,8 +1,6 @@
 package com.ferp.system.model;
 
-/**
- * Modelo de un tratamiento del catálogo.
- */
+
 public class Tratamiento {
 
     // ID real de la base de datos
