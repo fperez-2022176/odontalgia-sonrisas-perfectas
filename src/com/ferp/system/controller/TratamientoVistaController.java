@@ -9,6 +9,9 @@ import com.ferp.system.model.Tratamiento;
 import com.ferp.system.model.TratamientoData;
 import com.ferp.system.utils.AlertasCatalogo;
 import com.ferp.system.utils.ViewFactory;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,8 +58,6 @@ public class TratamientoVistaController implements Initializable {
     private final TratamientoDAO tratamientoDAO = new TratamientoDAO();
     private final ViewFactory viewFactory = new ViewFactory();
 
-private final ObservableList<Tratamiento> tratamientos =
-        TratamientoData.getTratamientos();
 
 
  @Override
@@ -74,7 +75,11 @@ private final ObservableList<Tratamiento> tratamientos =
             lblAvisoAdmin.setManaged(false);
         }
 
-        cargarDatosDesdeBaseDeDatos();
+        try {
+            cargarDatosDesdeBaseDeDatos();
+        } catch (SQLException ex) {
+            Logger.getLogger(TratamientoVistaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         tablaTratamientos.setItems(tratamientos);
 
@@ -87,7 +92,7 @@ private final ObservableList<Tratamiento> tratamientos =
         });
     }
 
-    private void cargarDatosDesdeBaseDeDatos() {
+    private void cargarDatosDesdeBaseDeDatos() throws SQLException {
         tratamientos.clear();
         List<Tratamiento> listaDB = tratamientoDAO.obtenerServicios();
         if (listaDB != null) {
