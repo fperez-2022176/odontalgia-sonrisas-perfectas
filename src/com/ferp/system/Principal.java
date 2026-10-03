@@ -1,20 +1,25 @@
-
 package com.ferp.system;
 
+import com.ferp.system.utils.SceneManager;
+import com.ferp.system.utils.ViewFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-
 public class Principal extends Application {
 
- 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage escenarioPrincipal) {
 
+    public void start(Stage escenarioPrincipal) throws Exception {
+
+        escenarioPrincipal.setTitle("Sistema");
+        escenarioPrincipal.show();
+
+        SceneManager.getInstanciaSceneManager().setStagePrincipal(escenarioPrincipal);
+        ViewFactory viewFacto = new ViewFactory();
+        viewFacto.viewLogin();
     }
-
 }

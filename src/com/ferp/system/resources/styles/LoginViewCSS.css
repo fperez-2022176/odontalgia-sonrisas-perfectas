@@ -1,0 +1,245 @@
+/* =====================================================
+   FONDO GENERAL
+   ===================================================== */
+
+.root {
+    -fx-background-color: #0b1726;
+    -fx-padding: 25px;
+}
+
+
+/* =====================================================
+   TARJETA PRINCIPAL
+   ===================================================== */
+
+.card {
+    -fx-background-color: #12263a;
+
+    -fx-background-radius: 22px;
+
+    -fx-border-color: #1e4d6b;
+    -fx-border-width: 1px;
+    -fx-border-radius: 22px;
+
+    -fx-padding: 30px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        #050b12,
+        25,
+        0.3,
+        0,
+        10
+    );
+}
+
+
+/* =====================================================
+   TITULO
+   ===================================================== */
+
+.title {
+    -fx-font-family: "Arial";
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #4fc3f7;
+}
+
+
+/* =====================================================
+   SUBTITULO
+   ===================================================== */
+
+.subtitle {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #90a4ae;
+}
+
+
+/* =====================================================
+   TITULO DE SECCION
+   ===================================================== */
+
+.section-title {
+    -fx-font-family: "Arial";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #29b6f6;
+}
+
+
+/* =====================================================
+   LABELS
+   ===================================================== */
+
+.input-label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #cfd8dc;
+}
+
+
+/* =====================================================
+   CAMPOS DE TEXTO
+   ===================================================== */
+
+.text-field {
+
+    -fx-pref-height: 45px;
+
+    -fx-background-color: #0d1f30;
+
+    -fx-border-color: #28516d;
+    -fx-border-width: 1px;
+
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+
+    -fx-padding: 0 13px;
+
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #ffffff;
+
+    -fx-prompt-text-fill: #78909c;
+}
+
+
+/* =====================================================
+   TEXTFIELD SELECCIONADO
+   ===================================================== */
+
+.text-field:focused {
+
+    -fx-background-color: #10283c;
+
+    -fx-border-color: #29b6f6;
+    -fx-border-width: 2px;
+
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        #1565c0,
+        10,
+        0.25,
+        0,
+        0
+    );
+}
+
+
+/* =====================================================
+   BOTON CONFIRMAR
+   ===================================================== */
+
+.confirm-button {
+
+    -fx-pref-height: 47px;
+
+    -fx-background-color: #0277bd;
+
+    -fx-text-fill: #ffffff;
+
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #29b6f6;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+
+    -fx-cursor: hand;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        #05111d,
+        8,
+        0.3,
+        0,
+        4
+    );
+}
+
+
+/* =====================================================
+   BOTON HOVER
+   ===================================================== */
+
+.confirm-button:hover {
+
+    -fx-background-color: #0288d1;
+
+    -fx-border-color: #4fc3f7;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        #0277bd,
+        15,
+        0.35,
+        0,
+        4
+    );
+}
+
+
+/* =====================================================
+   BOTON PRESIONADO
+   ===================================================== */
+
+.confirm-button:pressed {
+
+    -fx-background-color: #01579b;
+}
+
+
+/* =====================================================
+   BOTON ADMIN
+   ===================================================== */
+
+.admin-button {
+
+    -fx-background-color: transparent;
+
+    -fx-text-fill: #90caf9;
+
+    -fx-font-family: "Arial";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+
+    -fx-border-color: transparent;
+
+    -fx-cursor: hand;
+}
+
+
+.admin-button:hover {
+
+    -fx-text-fill: #4fc3f7;
+
+    -fx-underline: true;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.footer {
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 10px;
+
+    -fx-text-fill: #607d8b;
+}

@@ -1,0 +1,62 @@
+.tratamiento-root {
+    -fx-background-color: #f4f6f8;
+}
+
+.tratamiento-header {
+    -fx-background-color: #1d3557;
+}
+
+.tratamiento-titulo {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.tratamiento-subtitulo {
+    -fx-text-fill: #cfe0f3;
+    -fx-font-size: 13px;
+}
+
+.tratamiento-aviso-admin {
+    -fx-text-fill: #ffe08a;
+    -fx-font-size: 11px;
+}
+
+.tabla-tratamientos {
+    -fx-font-size: 13px;
+}
+
+.tratamiento-formulario {
+    -fx-background-color: white;
+    -fx-border-color: #dfe3e8;
+    -fx-border-width: 1px 0 0 0;
+}
+
+.etiqueta {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #444;
+}
+
+.btn-primario {
+    -fx-background-color: #1d3557;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 16px;
+}
+
+.btn-secundario {
+    -fx-background-color: #457b9d;
+    -fx-text-fill: white;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 16px;
+}
+
+.btn-ghost {
+    -fx-background-color: transparent;
+    -fx-border-color: #999;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 16px;
+}
